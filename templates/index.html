@@ -36,7 +36,7 @@
     {% endblock %}
   </head>
   <body>
-    <h1>♡♥︎ Friendship Chart ♥︎♡</h1>
+    <h1>♡Friendship Chart♡</h1>
     <div style="margin-bottom: 1rem">
       <form action="" method="post">
         {{form.hidden_tag()}} {{form.l()}} knows {{form.r()}} from
@@ -51,9 +51,9 @@
         <td>
           <b>{{edge.l}}</b>
           <i> is friends with </i>
-          <b>{{edge.r}}</b>
+          <b>{{edge.r}}</b>{%if edge.how %}
           <i> from </i>
-          <b>{{edge.how}}</b>
+          <b>{{edge.how}}</b>{% endif %}
         </td>
       </tr>
       {% endfor %}

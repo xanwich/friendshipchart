@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Regexp, Length
-from models import Edge
+from models import Edge, max_length
 
 
 def lower(s):
@@ -22,23 +22,36 @@ class EdgeForm(FlaskForm):
     l = StringField(
         "l",
         id="form_l",
-        validators=[DataRequired(), Length(min=1, max=64)],
+        validators=[DataRequired(), Length(min=1, max=max_length)],
         filters=[lower, strip],
-        render_kw={"placeholder": "friend 1", "style": "text-transform: lowercase;"},
+        render_kw={
+            "placeholder": "friend 1",
+            "style": "text-transform: lowercase;",
+            "maxlength": max_length,
+        },
     )
     r = StringField(
         "r",
         id="form_r",
-        validators=[DataRequired(), Length(min=1, max=64)],
+        validators=[DataRequired(), Length(min=1, max=max_length)],
         filters=[lower, strip],
-        render_kw={"placeholder": "friend 2", "style": "text-transform: lowercase;"},
+        render_kw={
+            "placeholder": "friend 2",
+            "style": "text-transform: lowercase;",
+            "maxlength": max_length,
+        },
     )
     how = StringField(
         "how",
         id="form_how",
-        validators=[DataRequired(), Length(min=1, max=64)],
+        default="",
+        validators=[Length(max=max_length)],
         filters=[lower, strip],
-        render_kw={"placeholder": "school", "style": "text-transform: lowercase;"},
+        render_kw={
+            "placeholder": "school",
+            "style": "text-transform: lowercase;",
+            "maxlength": max_length,
+        },
     )
     submit = SubmitField("make friends!")
 
