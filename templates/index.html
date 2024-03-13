@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Friendship Chart</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+      $.ui.autocomplete.filter = function(array, term) {
+          var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+          return $.grep(array, function(value) {
+              return matcher.test(value.label || value.value || value);
+          });
+      };
+      $(function() {
+          var availableTags = [{% for person in people %}"{{person}}",{% endfor %}];
+          var opts = {
+              source: availableTags,
+              delay: 0,
+              autoFocus: true
+          }
+          $("#form_l").autocomplete(opts);
+          $("#form_r").autocomplete(opts);
+      });
+    </script>
+    {% endblock %}
+  </head>
+  <body>
+    <h1>♡♥︎ Friendship Chart ♥︎♡</h1>
+    <div style="margin-bottom: 1rem">
+      <form action="" method="post">
+        {{form.hidden_tag()}} {{form.l()}} knows {{form.r()}} from
+        {{form.how()}} {{form.submit()}}
+      </form>
+    </div>
+    <hr />
+    <p><a href="/graph">see the graph</a></p>
+    <table style="margin: auto">
+      {% for edge in edges%}
+      <tr>
+        <td>
+          <b>{{edge.l}}</b>
+          <i> is friends with </i>
+          <b>{{edge.r}}</b>
+          <i> from </i>
+          <b>{{edge.how}}</b>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Friendship Chart</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    {% endblock %}
+  </head>
+  <body>
+    <p><a href="/">< back</a></p>
+    <img
+      src="data:image/svg+xml;base64, {{graph}}"
+      style="object-fit: contain; max-width: 100vw; max-height: 90vh"
+      width="100%"
+      height="90%"
+    />
+  </body>
+</html>
