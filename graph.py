@@ -19,9 +19,7 @@ class Grapher:
     def make_image(self, edge_colors=None, node_colors=None):
         plt.clf()
         plt.figure(figsize=(12, 12))
-        pos = nx.spring_layout(
-            self.G, scale=20, k=2 / (self.G.order() ** 0.9), iterations=100
-        )
+        pos = nx.nx_agraph.graphviz_layout(self.G, prog="neato")
         nx.draw_networkx(
             self.G,
             pos=pos,

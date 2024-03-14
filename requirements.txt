@@ -45,6 +45,7 @@ WTForms
 zipp
 psycopg2
 pyflakes
+pygraphviz
 pyparsing
 python-dateutil
 python-dotenv
