@@ -8,10 +8,19 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
-    {% endblock %}
+    {% include "autocomplete.html" %} {% endblock %}
   </head>
   <body>
     <p><a href="/">< back</a></p>
+    <div style="margin-bottom: 1rem">
+      <form action="" method="get">
+        see how {{form.hidden_tag()}} {{form.l()}} knows {{form.r()}}
+        <input type="submit" value="search" />
+      </form>
+    </div>
+    {% if text %}
+    <p>{{text}}</p>
+    {% endif %}
     <img
       src="data:image/svg+xml;base64, {{graph}}"
       style="object-fit: contain; max-width: 100vw; max-height: 90vh"

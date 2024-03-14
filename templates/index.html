@@ -8,32 +8,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
-
-    <link
-      rel="stylesheet"
-      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-      $.ui.autocomplete.filter = function(array, term) {
-          var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-          return $.grep(array, function(value) {
-              return matcher.test(value.label || value.value || value);
-          });
-      };
-      $(function() {
-          var availableTags = [{% for person in people %}"{{person}}",{% endfor %}];
-          var opts = {
-              source: availableTags,
-              delay: 0,
-              autoFocus: true
-          }
-          $("#form_l").autocomplete(opts);
-          $("#form_r").autocomplete(opts);
-      });
-    </script>
-    {% endblock %}
+    {% include "autocomplete.html" %} {% endblock %}
   </head>
   <body>
     <h1>♡Friendship Chart♡</h1>
