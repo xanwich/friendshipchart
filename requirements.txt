@@ -12,6 +12,7 @@ Flask-Login
 Flask-SQLAlchemy
 Flask-WTF
 fonttools
+graphviz
 greenlet
 gunicorn
 idna
@@ -45,7 +46,7 @@ WTForms
 zipp
 psycopg2
 pyflakes
-pygraphviz
+pygraphviz==1.9
 pyparsing
 python-dateutil
 python-dotenv

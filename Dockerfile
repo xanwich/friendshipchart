@@ -1,7 +1,6 @@
-FROM python:3.11-alpine
-RUN apk update \
-    && apk add libpq postgresql-dev \
-    && apk add build-base
+FROM python:3.11-bookworm
+RUN apt-get update \
+    && apt-get install graphviz libgraphviz-dev -y
 COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
 RUN pip install -r requirements.txt
