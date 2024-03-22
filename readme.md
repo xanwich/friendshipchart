@@ -12,4 +12,8 @@ I wanted to make a family tree of all my friends because I was confused about ho
 
 ## Deployment
 
-This app is setup to be deployed easily with fly.io - follow [fly's instructions](https://fly.io/docs/languages-and-frameworks/python/#launch-your-fly-app) to use `flyctl` to create and deploy an app. Don't forget to create an attached postgres instance! You'll additionally need to set your secret key using `flyctl secrets`.
+This app is setup to be launched easily with fly.io - follow [fly's instructions](https://fly.io/docs/languages-and-frameworks/python/#launch-your-fly-app) to use `flyctl` to create and deploy an app. Don't forget to create an attached postgres instance! You'll additionally need to set your secret key using `flyctl secrets`.
+
+### Automated Deploys
+
+This app is also setup to deploy automatically to fly.io upon push to the `main` branch. To set this up, after launching the app, create a deployment API token with `fly tokens create deploy` and add it to your GitHub actions secrets. See [this guide](https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/) for more info. To skip this entirely, delete the `.github/workflows/fly.yml` file.
