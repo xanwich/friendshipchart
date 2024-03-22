@@ -2,6 +2,14 @@
 
 I wanted to make a family tree of all my friends because I was confused about how we all knew each other. This is more or less what I came up with. It's a little flask app where you can type in your friends and how they know each other, and it'll make a little graph for you.
 
+## Screenshots
+
+Add friends and see a list of how everyone knows each other
+![Home page](/docs/img/screenshot-1.png)
+
+View a "family tree" and search for the shortest path between two friends
+![Graph page](/docs/img/screenshot-2.png)
+
 ## Installation
 
 1. Install requirements in an environment with `venv` and `pip`, or with `conda`; activate your environment
